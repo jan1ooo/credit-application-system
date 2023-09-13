@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:credit_request_db
+    username: sa
+    password: 12345678
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
