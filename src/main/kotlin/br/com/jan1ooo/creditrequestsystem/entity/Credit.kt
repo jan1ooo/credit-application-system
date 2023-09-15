@@ -1,6 +1,6 @@
 package br.com.jan1ooo.creditrequestsystem.entity
 
-import br.com.jan1ooo.creditrequestsystem.enumerated.Status
+import br.com.jan1ooo.creditrequestsystem.enumeration.Status
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -14,6 +14,6 @@ data class Credit(
         @Column(nullable = false) val dayFirstInstallElement: LocalDate,
         @Column(nullable = false) val numberOfInstallElement: Int = 0,
         @Enumerated val status: Status = Status.IN_PROGRESS,
-        @ManyToOne() val customer: Customer? = null,
+        @ManyToOne() var customer: Customer? = null,
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
 )
