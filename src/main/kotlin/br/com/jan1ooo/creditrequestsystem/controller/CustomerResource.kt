@@ -5,6 +5,7 @@ import br.com.jan1ooo.creditrequestsystem.dto.CustomerUpdateDto
 import br.com.jan1ooo.creditrequestsystem.dto.CustomerView
 import br.com.jan1ooo.creditrequestsystem.entity.Customer
 import br.com.jan1ooo.creditrequestsystem.service.impl.CustomerService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -24,7 +25,7 @@ class CustomerResource(
 ) {
 
     @PostMapping
-    fun saveCustomer(@RequestBody customerDto: CustomerDTO): ResponseEntity<String>{
+    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDTO): ResponseEntity<String>{
         val savedCustomer = this.customerService.save(customerDto.toEntity())
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -42,7 +43,7 @@ class CustomerResource(
 
     @PatchMapping
     fun updateMapping(@RequestParam(value = "customerId") id: Long,
-                      @RequestBody customerUpdateDto: CustomerUpdateDto): CustomerView{
+                      @RequestBody @Valid customerUpdateDto: CustomerUpdateDto): CustomerView{
         val customer: Customer = this.customerService.findById(id)
         val customerToUpdate: Customer = customerUpdateDto.toEntity(customer)
         val customerUpdated: Customer = this.customerService.save(customerToUpdate)

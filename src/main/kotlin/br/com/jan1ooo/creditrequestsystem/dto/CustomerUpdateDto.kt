@@ -1,14 +1,15 @@
 package br.com.jan1ooo.creditrequestsystem.dto
 
 import br.com.jan1ooo.creditrequestsystem.entity.Customer
+import jakarta.validation.constraints.NotEmpty
 import java.math.BigDecimal
 
 data class CustomerUpdateDto(
-        val firstName: String,
-        val lastName: String,
-        val income: BigDecimal,
-        val zipCode: String,
-        val street: String
+        @field:NotEmpty val firstName: String,
+        @field:NotEmpty val lastName: String,
+        @field:NotEmpty val income: BigDecimal,
+        @field:NotEmpty val zipCode: String,
+        @field:NotEmpty val street: String
 ) {
     fun toEntity(customer: Customer): Customer{
         customer.firstName = this.firstName

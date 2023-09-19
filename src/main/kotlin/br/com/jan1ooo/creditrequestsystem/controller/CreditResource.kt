@@ -5,6 +5,7 @@ import br.com.jan1ooo.creditrequestsystem.dto.CreditView
 import br.com.jan1ooo.creditrequestsystem.dto.CreditViewList
 import br.com.jan1ooo.creditrequestsystem.entity.Credit
 import br.com.jan1ooo.creditrequestsystem.service.impl.CreditService
+import jakarta.validation.Valid
 import org.apache.coyote.Response
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
@@ -24,7 +25,7 @@ class CreditResource(
         private val creditService: CreditService
 ) {
     @PostMapping
-    fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String>{
+    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String>{
         val credit: Credit =this.creditService.save(creditDto.toEntity())
         return ResponseEntity
                 .status(HttpStatus.CREATED)
