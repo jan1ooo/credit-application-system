@@ -31,8 +31,8 @@ class CreditResource(
                 .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved")
     }
 
-    @GetMapping("/{customerId}")
-    fun findAllByCustomerId(@PathVariable customerId: Long): ResponseEntity<List<CreditViewList>>{
+    @GetMapping
+    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): ResponseEntity<List<CreditViewList>>{
         val creditViewList = this.creditService.findAllByCustomer(customerId).stream().map { credit: Credit -> CreditViewList(credit)}.toList()
         return ResponseEntity.ok().body(creditViewList)
     }

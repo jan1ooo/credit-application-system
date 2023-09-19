@@ -1,1 +1,0 @@
-ALTER TABLE customer ADD incomer DECIMAL NOT NULL

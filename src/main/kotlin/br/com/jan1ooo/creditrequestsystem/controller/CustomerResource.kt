@@ -38,7 +38,7 @@ class CustomerResource(
     }
 
     @DeleteMapping("/{id}")
-    fun deleteById(@PathVariable id: Long) = this.customerService.delete(id)
+    fun deleteById(@PathVariable id: Long) = this.customerService.deleteById(id)
 
     @PatchMapping
     fun updateMapping(@RequestParam(value = "customerId") id: Long,
