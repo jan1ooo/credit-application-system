@@ -5,6 +5,7 @@ import br.com.jan1ooo.creditrequestsystem.dto.CustomerUpdateDto
 import br.com.jan1ooo.creditrequestsystem.dto.CustomerView
 import br.com.jan1ooo.creditrequestsystem.entity.Customer
 import br.com.jan1ooo.creditrequestsystem.service.impl.CustomerService
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/customers")
+@Tag(name = "Customer", description = "API Customer")
 class CustomerResource(
     private val customerService: CustomerService
 ) {

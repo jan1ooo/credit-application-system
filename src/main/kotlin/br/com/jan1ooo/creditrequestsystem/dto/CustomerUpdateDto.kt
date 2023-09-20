@@ -2,12 +2,13 @@ package br.com.jan1ooo.creditrequestsystem.dto
 
 import br.com.jan1ooo.creditrequestsystem.entity.Customer
 import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.Positive
 import java.math.BigDecimal
 
 data class CustomerUpdateDto(
         @field:NotEmpty val firstName: String,
         @field:NotEmpty val lastName: String,
-        @field:NotEmpty val income: BigDecimal,
+        @field:Positive val income: BigDecimal,
         @field:NotEmpty val zipCode: String,
         @field:NotEmpty val street: String
 ) {

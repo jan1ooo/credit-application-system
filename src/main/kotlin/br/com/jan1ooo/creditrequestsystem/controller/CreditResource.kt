@@ -5,6 +5,7 @@ import br.com.jan1ooo.creditrequestsystem.dto.CreditView
 import br.com.jan1ooo.creditrequestsystem.dto.CreditViewList
 import br.com.jan1ooo.creditrequestsystem.entity.Credit
 import br.com.jan1ooo.creditrequestsystem.service.impl.CreditService
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.apache.coyote.Response
 import org.springframework.http.HttpStatus
@@ -21,6 +22,7 @@ import java.util.UUID
 
 @RestController
 @RequestMapping("/api/credits")
+@Tag(name = "Credit", description = "API Credit")
 class CreditResource(
         private val creditService: CreditService
 ) {
