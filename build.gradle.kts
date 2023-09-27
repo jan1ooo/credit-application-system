@@ -28,7 +28,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     runtimeOnly("com.h2database:h2")
+    testImplementation ("io.mockk:mockk:1.13.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+
 }
 
 tasks.withType<KotlinCompile> {
