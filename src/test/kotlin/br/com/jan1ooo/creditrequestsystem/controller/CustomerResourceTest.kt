@@ -1,11 +1,13 @@
 package br.com.jan1ooo.creditrequestsystem.controller
 
 import br.com.jan1ooo.creditrequestsystem.dto.CustomerDTO
+import br.com.jan1ooo.creditrequestsystem.entity.Customer
 import br.com.jan1ooo.creditrequestsystem.repository.CustomerRepository
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestTemplate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -79,6 +81,28 @@ class CustomerResourceTest {
                 .andExpect(MockMvcResultMatchers.status().isBadRequest)
                 .andDo(MockMvcResultHandlers.print())
 
+    }
+
+    @Test
+    fun `should find customer by id and return 200 status`(){
+        //given
+        val customer: Customer = customerRepository.save(builderCustomerDto().toEntity())
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("$URL/${customer.id}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
+    @Test
+    fun `should not find customer with invalid id and return 400 status`(){
+        //given
+        val invalidId: Long = 123L
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("$URL/$invalidId}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound)
     }
 
     private fun builderCustomerDto(
